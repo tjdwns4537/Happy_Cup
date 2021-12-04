@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <!-- 무한스크롤 -->
+        <ScrollView
+            android:id="@+id/main_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9.3">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/cstLyGuide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.2" />
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/cupping_shop_logo"
+                    app:layout_constraintBottom_toTopOf="@+id/cstLyGuide"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- 슬라이드 레이아웃 -->
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager_idol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rectext" />
+
+                <!-- dot 레이아웃 -->
+                <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+                    android:id="@+id/spring_dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:dampingRatio="0.5"
+                    app:dotsCornerRadius="20dp"
+                    app:dotsSize="9dp"
+                    app:dotsSpacing="6dp"
+                    app:dotsStrokeWidth="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPager_idol"
+                    app:stiffness="300" />
+
+                <!-- 구분선 -->
+                <ImageView
+                    android:id="@+id/diff_line1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spring_dots_indicator"
+                    app:srcCompat="@drawable/line1" />
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/cupping_logo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!-- 검색 버튼 -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/search_term_text_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:hint="검색"
+                        app:boxBackgroundColor="#E5E5E5"
+                        app:endIconMode="clear_text"
+                        app:helperTextEnabled="false"
+                        app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                        app:startIconDrawable="@drawable/lense"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/search_term_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:inputType="text"
+                            android:maxLength="12"
+                            android:textSize="9sp"
+                            android:layout_marginBottom="5dp"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <include
+                        android:id="@+id/included_searchbtn"
+                        layout="@layout/layout_button_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/cupping_text"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgBack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/ripple_custom"
+                    android:src="@drawable/btn_three"
+                    app:layout_constraintEnd_toStartOf="@+id/recommendProduct"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+
+                <ImageButton
+                    android:id="@+id/recommendProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_custom"
+                    android:src="@drawable/btn_star"
+                    app:layout_constraintEnd_toStartOf="@+id/brand"
+                    app:layout_constraintStart_toEndOf="@+id/category"
+                    app:layout_constraintTop_toTopOf="@+id/category" />
+
+                <ImageButton
+                    android:id="@+id/brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_custom"
+                    android:src="@drawable/btn_brand"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/recommendProduct"
+                    app:layout_constraintTop_toTopOf="@+id/recommendProduct" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="카테고리"
+                    android:textColor="@color/mainColor"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/category"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/category"
+                    app:layout_constraintTop_toBottomOf="@+id/category" />
+
+                <TextView
+                    android:id="@+id/rectext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="2dp"
+                    android:text="추천상품"
+                    android:textColor="@color/mainColor"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/recommendProduct"
+                    app:layout_constraintStart_toStartOf="@+id/recommendProduct"
+                    app:layout_constraintTop_toBottomOf="@+id/recommendProduct" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="브랜드"
+                    android:textColor="@color/mainColor"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/brand"
+                    app:layout_constraintStart_toStartOf="@+id/brand"
+                    app:layout_constraintTop_toBottomOf="@+id/brand" />
+
+                <TextView
+                    android:id="@+id/title_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="브랜드"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/diff_line1" />
+
+                <!-- 세일,업데이트 테이블 -->
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_brand">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="600dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tabLayout_menu" />
+
+                <!-- 추천상품 부분 -->
+
+                <ImageView
+                    android:id="@+id/diff_line2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPager2"
+                    app:srcCompat="@drawable/line1" />
+
+                <TextView
+                    android:id="@+id/title_brand2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="커핑추천상품"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/diff_line2" />
+
+                <!-- 세일,업데이트 테이블 -->
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout_menu2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/title_brand2">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="600dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tabLayout_menu2" />
+
+                <!-- 추천상품 부분 끝 -->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <!-- 하단 고정 메뉴바 -->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:visibility="visible"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/fragment_shop_menu" />
+
+    </LinearLayout>
+</layout>
